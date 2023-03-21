@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import styled from "styled-components";
+
+import { Auth0Provider } from "@auth0/auth0-react";
+import Profile from './components/Profile';
+
+const AppContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 31px;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <Auth0Provider
+        domain="dev-eytums7hq36kotja.us.auth0.com"
+        clientId="pgsMZdgodXen69jJvbqY7evYvz6TLrGZ"
+        authorizationParams={{
+          redirect_uri: window.location.origin
+        }}
+      >
+        Hello World!<br />
+        <Profile /><br />
+      </Auth0Provider>
+    </AppContainer>
   );
 }
 
